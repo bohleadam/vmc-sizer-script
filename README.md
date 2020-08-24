@@ -35,7 +35,7 @@ The functionality of this script is pretty straight forward. It will do the foll
 3. Collect all the VMs on the vCenter server and calculate the number of VMs, the vCPU allocations as well as Memory
 4. It will take this information and POST this to the [VMC Sizer](https://vmc.vmware.com/sizer/workload-profiles) and return the results.
 
-## Future Features and Functions which I would like to include at some point.
+# Future Features and Functions which I would like to include at some point.
 
 1. I would like to include the capability for the script to size for both i3 and i3en hosts in one run of the API call or loop through multipl calls and provide results quickly and efficiently
 2. Include a reference to VMC Sizing. I do not believe there is an API for pricing information so I may look at putting the pricing info in a JSON file and referencing that, will need to keep that JSON up to date.
