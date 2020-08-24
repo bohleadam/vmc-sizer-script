@@ -24,7 +24,6 @@ foreach ($vm in Get-Vm)
 {
   foreach ($vmHardDisk in $vm| Get-HardDisk)
   {
-  # Write-Progress -Activity "We are searching for all the VM Hardisks in $global:DefaultVIServer this data will be used to calculate consumed storage by VMs"  -Status "Current VM: $vm"
   $disk = "" | Select-Object harddiskname,HardDiskCapacityGb
   $disk.HardDiskName = $vmHardDisk.Name
   $disk.HardDiskCapacityGb = [System.Math]::Round($vmHardDisk.CapacityGB, 0)
@@ -42,7 +41,6 @@ foreach ($cluster in Get-Cluster)
         foreach($vmhost in ($cluster | Get-VMHost))
         {
             foreach($vm in (Get-VM -Location $vmhost)){
-				# Write-Progress -Activity "We are searching for all the VMs in $global:DefaultVIServer. This data will be used to calculate consumed VMCount, CPU and Memory consumed by VMs"  -Status "Current VM: $vm"
                 $VMView = $vm | Get-View
                 $VMSummary = "" | Select-Object VMName,VMSockets,VMCores, VMMemory
                 $VMSummary.VMName = $vm.Name
@@ -67,17 +65,14 @@ $averageCPUPerVM = $cpuCount.Sum / $vmCount
 $averageCPUPerVM = [math]::Ceiling($averageCPUPerVM)
 
 ## Get Average vRAM per VM
-
 $averageMemoryPerVM = $memoryCountGB / $vmCount
 $averageMemoryPerVM = [math]::Round($averageMemoryPerVM)
 
 ## Get Average Storage per VM
-
 $averageStoragePerVM = $diskSum.Sum / $vmCount
 $averageStoragePerVM = [math]::Ceiling($averageStoragePerVM)
 
 # Write Collected data out to the Console to check the data
-
 Write-Host "This is the Sum of VMDK Disks in this vCenter: "-ForegroundColor Gray -NoNewline
 Write-Host  $diskSum.Sum"GB" -ForegroundColor Green
 Write-Host "This is the number of VMs in this vCenter which will be sized for (No Templates taken into consideration): "-ForegroundColor Gray -NoNewline
@@ -106,7 +101,6 @@ Write-Host "The Sizer will use the following Memory Utilizaton value of: " -Fore
 Write-Host $memoryutilization -ForegroundColor Green
 
 # Choose Host Type and set the Profile Mode code used
-
 if ($instancetype -eq "i3en"){
     $profileModeCode = "FDS"
 }else {
