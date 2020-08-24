@@ -1,1 +1,29 @@
-# vmc-sizer-script
+# VMC on AWS Sizer Script
+
+I put this sizer script together on order to help people who are looking to size VMware Cloud on AWS SDDC deployments. I have posted an article on this on my blog, which you can locate here: [VMC Sizing Script and the VMC Sizer API Blog Post](https://adambohle.com/post/vmc-sizing-script/)
+
+The script accepts a number of parameters and I just wanted to documment those here in the Readme so that people are aware of those.
+
+**-vcenterqdn** this is a mandatory parameter in order for the script to connect to the on-premise vCenter server which you want to analyse for VMs. You can supply either the FQDN or the IP Address, you will be prompted for credentials at runtime
+
+**-instancetype** again this is a mandatory parameter and is used to specify the VMC on AWS instance type which you want to size for, either "i3" or "i3en"
+
+There are a number of other parameters which you can pass to the script these are all detailed out in the first part of the script, and are hopefully fairly self explanatory and come with help text
+
+```PowerShell
+param (
+    [Parameter(Position=0,mandatory=$true,HelpMessage="Enter the vCenter FQDN or IP address which you would like to gather sizing information from.")]
+    [string] $vcenterfqdn, 
+    [Parameter(Position=1,mandatory=$true,HelpMessage="Enter the VMC instance type you would like to size for, i3 or i3en")]
+    [string] $instancetype,
+    [Parameter(Position=2,mandatory=$false,HelpMessage="Enter the vCPU to Core Ratio you want to use, if you specify nothing then the default value will be 4")]
+    [int] $vcpuspercore = 4,
+    [Parameter(Position=3,mandatory=$false,HelpMessage="Enter the vRAM to Physical RAM Ratio you want to use, if you specify nothing then the default value will be 1.25")]
+    [decimal] $targetramratio = 1.25,
+    [Parameter(Position=4,mandatory=$false,HelpMessage="Enter the CPU Utililization, if you specify nothing the default value will be 30")]
+    [int] $cpuutilization = 30,
+    [Parameter(Position=5,mandatory=$false,HelpMessage="Enter the Memory Utililization, if you specify nothing the default value will be 100")]
+    [int] $memoryutilization = 100)
+    ```
+
+    
