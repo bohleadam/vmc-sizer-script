@@ -137,7 +137,7 @@ $bodyPost = $body | ConvertTo-Json -Depth 6
 
 $sizingJson = Invoke-RestMethod -Uri $uri -Headers $headers -Body $bodyPost -Method Post
 
-$sizingJson.genericResponse.clusterConfiguration.sddcInformation | Format-Table
+$sizingJson.genericResponse.clusterConfiguration.sddcInformation | Format-List
 
 Write-Host "Sizing Recommendations"
 write-host "You need" $sizingJson.genericResponse.clusterConfiguration.sddcInformation.nodesSize "Hosts of type" $sizingJson.genericResponse.instanceType "and the workload is" $sizingJson.genericResponse.recommendationType
