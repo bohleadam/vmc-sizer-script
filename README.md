@@ -1,5 +1,7 @@
 # VMC on AWS Sizer Script
 
+**Please be aware that this is an unsupported script, please check all calculations before making decisions basedon this output**
+
 I put this sizer script together on order to help people who are looking to size VMware Cloud on AWS SDDC deployments. I have posted an article on this on my blog, which you can locate here: [VMC Sizing Script and the VMC Sizer API Blog Post](https://adambohle.com/post/vmc-sizing-script/)
 
 The script accepts a number of parameters and I just wanted to documment those here in the Readme so that people are aware of those.
