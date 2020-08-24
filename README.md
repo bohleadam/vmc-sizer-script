@@ -42,3 +42,4 @@ The functionality of this script is pretty straight forward. It will do the foll
 1. I would like to include the capability for the script to size for both i3 and i3en hosts in one run of the API call or loop through multipl calls and provide results quickly and efficiently
 2. Include a reference to VMC Sizing. I do not believe there is an API for pricing information so I may look at putting the pricing info in a JSON file and referencing that, will need to keep that JSON up to date.
 3. I would like to add a function where this script can pull info straight from a RVTools export. That might be useful to speed up sizing potentially. Need to think about this.
+4. I can certainly clean up the output and format this detail a little better ;)
