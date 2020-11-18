@@ -12,7 +12,7 @@ param (
     [Parameter(Position=5,mandatory=$false,HelpMessage="Enter the Memory Utililization, if you specify nothing the default value will be 100")]
     [int] $memoryutilization = 100)
 
-Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $false -InvalidCertificateAction Ignore -Confirm:$false | Out-Null
+Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $false -Confirm:$false | Out-Null
 Connect-VIServer -Server $vcenterfqdn
 
 ## Get VM Metrics
